@@ -12,3 +12,43 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+
+/*Login*/
+.login-container{
+  margin-top: 100px;
+}
+.form-signin {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+  border: 1px solid #eee;
+}
+
+.form-signin .form-control {
+  position: relative;
+  box-sizing: border-box;
+  height: auto;
+  padding: 10px;
+  font-size: 16px;
+}
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+
+.full-width{
+  width:100%;
+}
+
+a{
+  cursor: pointer !important;
+}
+
+.avatar {
+  height: 6vmin;
+  pointer-events: none;
+  margin-left: 10px;
+  border-radius: 50%;
+}

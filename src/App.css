@@ -39,9 +39,4 @@
   }
 }
 
-.avatar {
-  height: 5vmin;
-  pointer-events: none;
-  margin-left: 10px;
-  border-radius: 50%;
-}
+

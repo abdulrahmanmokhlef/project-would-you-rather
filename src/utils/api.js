@@ -20,6 +20,5 @@ export function saveQuestion (question) {
 }
 
 export function saveQuestionAnswer (questionData) {
-  return   _saveQuestionAnswer(questionData),
-(info)
+  return   _saveQuestionAnswer(questionData)
 }
