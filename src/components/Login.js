@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { setAuthedUser } from '../actions/authedUser';
+import { saveTolocalStorage } from '../utils/localStorage';
 
 class Login extends Component {
 
@@ -19,7 +20,9 @@ class Login extends Component {
     handleSubmit = (e) =>{
         debugger
         e.preventDefault()
-        this.props.dispatch(setAuthedUser(this.state.userId))
+        this.props.dispatch(setAuthedUser(this.state.userId));
+        saveTolocalStorage('authedUser', this.state.userId )
+        this.props.history.push("/");
     }
     
     render () {
