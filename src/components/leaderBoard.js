@@ -6,6 +6,7 @@ export default function LeaderBoard (){
         <div>
             LeaderBoard
         </div>
+
     )
 
 }

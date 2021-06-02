@@ -27,23 +27,21 @@ class App extends Component{
         <Navbar />
         
         <Switch>
-        {/* <Route exact path="/" render={() => authedUser ? <Redirect to="/login" /> : <Home/>} />  */}
 
           <AuthedRoute exact path="/" component={Home}/>
 
-          <Route  path="/login" render = {({history}) =>{
+          <Route exact path="/login" component={Login}/>
+          {/* <Route  path="/login" render = {({history}) =>{
             return loading === true || authedUser !== null
             ? null
             : <Login history = {history} /> 
-          }}/>
+          }}/> */}
           
           <AuthedRoute path="/questions" component={Questions}/>
           <AuthedRoute path="/leaderBoard" component={LeaderBoard}/>
 
         </Switch>
-        {/* {loading === true || authedUser !== null
-          ? null
-          : <Login />} */}
+
       </div>
     );
   }

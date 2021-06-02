@@ -26,5 +26,5 @@ export const loadFromLocalStorage = (key ='state') => {
 
 export const removeFromLocalstorage = (key) => {
     debugger
-    sessionStorage.removeItem(key);
+    localStorage.removeItem(key);
 }
