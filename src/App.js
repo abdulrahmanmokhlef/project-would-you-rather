@@ -11,6 +11,8 @@ import Home from './components/Home';
 import Questions from './components/questions';
 import AuthedRoute from './routes/AuthedRoute';
 import LeaderBoard from './components/leaderBoard';
+import QuestionPage from './components/questionPage';
+import { LoadingBar } from 'react-redux-loading';
 
 class App extends Component{
   componentDidMount() {
@@ -26,21 +28,19 @@ class App extends Component{
       <div className="container">
         <Navbar />
         
-        <Switch>
+        {loading === true
+          ? null
+          :
+          <Switch>
+            <AuthedRoute exact path="/" component={Home}/>
 
-          <AuthedRoute exact path="/" component={Home}/>
-
-          <Route exact path="/login" component={Login}/>
-          {/* <Route  path="/login" render = {({history}) =>{
-            return loading === true || authedUser !== null
-            ? null
-            : <Login history = {history} /> 
-          }}/> */}
-          
-          <AuthedRoute path="/questions" component={Questions}/>
-          <AuthedRoute path="/leaderBoard" component={LeaderBoard}/>
-
-        </Switch>
+            <Route  path="/login" component={Login}/>
+            <AuthedRoute path="/questions" component={Questions}/>
+            <AuthedRoute path="/question/:id" component={QuestionPage}/>
+            <AuthedRoute path="/leaderBoard" component={LeaderBoard}/>
+          </Switch>
+        }
+        
 
       </div>
     );

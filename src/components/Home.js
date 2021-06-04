@@ -46,7 +46,7 @@ class  Home extends Component{
                     <div className="tab-content" id="myTabContent">
                         <div className={this.state.show1? "tab-pane fade show active" : "tab-pane fade"} id="d" role="tabpanel" aria-labelledby="home-tab">
                             <ul className='dashboard-list'>
-                                {this.props.unVotedIds.map((id)=>(
+                                {this.props.unanswered.map((id)=>(
                                 <li key={id}>
                                     <Question id={id}/>
                                 </li>
@@ -55,7 +55,7 @@ class  Home extends Component{
                         </div>
                         <div className={this.state.show2? "tab-pane fade show active" : "tab-pane fade"} aria-labelledby="profile-tab">
                             <ul className='dashboard-list'>
-                                {this.props.votedIds.map((id)=>(
+                                {this.props.answered.map((id)=>(
                                 <li key={id}>
                                     <Question id={id}/>
                                 </li>
@@ -71,29 +71,31 @@ class  Home extends Component{
     }
 }
 
-const mapStateToProps = ({ users, questions, authedUser }, questionId) => {
+const mapStateToProps = ({ questions, authedUser }, questionId) => {
     debugger
-    const questionIds = Object.keys(questions).sort((a, b) => questions[b].timestamp - questions[a].timestamp );
-    const unVotedIds = questionIds.filter(q => {
-        debugger
-        if(questions[q].author !== authedUser){
-            return q
-        }
-    });
     
-    const votedIds = questionIds.filter(q => {
-        if(questions[q].author === authedUser){
-            return q
-        }
-    });
+    const answered = !authedUser
+      ? []
+      : Object.keys(questions).filter(id =>
+              questions[id].optionOne.votes.includes(authedUser) ||
+              questions[id].optionTwo.votes.includes(authedUser)
+          ).sort((a, b) => questions[b].timestamp - questions[a].timestamp );
+
+    const unanswered = !authedUser
+    ? []
+    : Object.keys(questions).filter(id =>
+            !questions[id].optionOne.votes.includes(authedUser) &&
+            !questions[id].optionTwo.votes.includes(authedUser)
+        ).sort((a, b) => questions[b].timestamp - questions[a].timestamp );
+    
 
     const author = !questions[questionId]? []: !questions[questionId];
     return {
       author,
       questionIds: Object.keys(questions)
       .sort((a, b) => questions[b].timestamp - questions[a].timestamp ),
-      unVotedIds,
-      votedIds,
+      answered,
+      unanswered,
     }
   };
   export default connect(mapStateToProps)(Home)

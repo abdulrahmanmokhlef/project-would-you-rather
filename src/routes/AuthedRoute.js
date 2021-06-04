@@ -5,14 +5,12 @@ import { Redirect, Route } from 'react-router';
 function AuthedRoute (props){
     const { userIds, authedUser, loading, ...restProps } = props
     debugger
-    if(!loading){
-        if(userIds.find(id => id === authedUser)){
-            return <Route {...restProps}/>
-        } else {
-            return <Redirect to="/Login" />
-        }
+
+    if(userIds.find(id => id === authedUser)){
+        return <Route {...restProps}/>
+    } else {
+        return <Redirect to="/Login" />
     }
-    return null
 }
 
 const mapStateToProps = state => ({

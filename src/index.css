@@ -95,3 +95,8 @@ a{
 .dashboard-list{
   list-style: none;
 }
+
+.card-section{
+  padding: 10px;
+  margin-top: 10px;
+}

@@ -5,7 +5,7 @@ import { getQuestions } from './questions'
 import { setAuthedUser } from './authedUser'
 import { loadFromLocalStorage } from '../utils/localStorage'
 
-const AUTHED_USER = loadFromLocalStorage('authedUser') ? loadFromLocalStorage('authedUser') : '';
+//const AUTHED_USER = loadFromLocalStorage('authedUser') ? loadFromLocalStorage('authedUser') : '';
 export function handleInitialData() {
     return (dispatch) => {
         return getInitialData ()
@@ -13,7 +13,7 @@ export function handleInitialData() {
                 debugger
                 dispatch(getUsers(users));
                 dispatch(getQuestions(questions));
-                dispatch(setAuthedUser(AUTHED_USER))
+               // dispatch(setAuthedUser(AUTHED_USER))
             })
     }
 }
