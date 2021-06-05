@@ -107,3 +107,22 @@ a{
   margin-left: 300px;
   vertical-align: middle !important;
 }
+
+.selected-question{
+  background-color: #A3E4D7 !important;
+  color:  #1E8449 !important;
+}
+
+
+.column {
+  -ms-flex: 25%; /* IE10 */
+  flex: 25%;
+  max-width: 25%;
+  padding: 0 4px;
+}
+
+.column img {
+  margin-top: 8px;
+  vertical-align: middle;
+  width: 100%;
+}

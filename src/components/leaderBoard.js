@@ -30,8 +30,8 @@ function LeaderBoard (props){
                         <div className="card leaderboard-container text-center" key ={user.id}>
                             <div className="card-body">
                                 <div className="row">
-                                    <div className="col-sm-3">
-                                        <img src={user.avatarURL} className="rounded-circle user-avatar" alt={user.name} /> 
+                                    <div className="col-sm-3 column">
+                                        <img src={user.avatarURL} className="rounded-circle" alt={user.name} /> 
                                     </div>
                                     <div className="col-sm-6 question">
                                         <h4>{user.name}</h4>

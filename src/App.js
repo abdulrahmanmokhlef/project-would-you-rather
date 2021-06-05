@@ -40,7 +40,7 @@ class App extends Component{
                 <PrivateRoute path="/home" component={Home}/>
                 <Route  path="/login" component={Login}/>
                 <PrivateRoute path="/add" component={NewQuestion}/>
-                <PrivateRoute path="/question/:id" component={QuestionPage}/>
+                <PrivateRoute path="/questions/:id" component={QuestionPage}/>
                 <PrivateRoute path="/leaderBoard" component={LeaderBoard}/>
                 <Route path="*"  component={NotFound} /> 
                 <Route component={NotFound} />

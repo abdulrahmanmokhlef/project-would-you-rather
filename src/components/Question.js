@@ -18,7 +18,7 @@ class Question extends Component {
         const answer = this.state.answer
 
         dispatch(submitQuestions({id, authedUser, answer}))
-        this.props.history.push('/')
+        this.props.history.push(`/questions/${id}`)
 
     }
 
@@ -42,8 +42,8 @@ class Question extends Component {
                             <div className="card-body">
                                 <div className="container">
                                 <div className="row">
-                                    <div className="col-sm-4">
-                                        <img src={user.avatarURL} className="rounded-circle user-avatar" alt={user.name} />
+                                    <div className="col-sm-4 column">
+                                        <img src={user.avatarURL} className="rounded-circle" alt={user.name} />
                                     </div>
                                     <div className="col-sm-8 question">
                                         <h4>Would you rather?</h4>
@@ -51,8 +51,10 @@ class Question extends Component {
                                     </div>
                                 </div>
                                 </div>
-                            <Link to={`/question/${id}`} className="btn btn-info full-width">View Poll</Link>
+                                <br />
+                                <Link to={`/questions/${id}`} className="btn btn-info full-width">View Poll</Link>
                             </div>
+                            
                           : 
                             <div className="card-body">
                                 <div className="container">
