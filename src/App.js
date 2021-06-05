@@ -13,6 +13,7 @@ import AuthedRoute from './routes/AuthedRoute';
 import LeaderBoard from './components/leaderBoard';
 import QuestionPage from './components/questionPage';
 import { LoadingBar } from 'react-redux-loading';
+import NewQuestion from './components/NewQuestion';
 
 class App extends Component{
   componentDidMount() {
@@ -35,9 +36,10 @@ class App extends Component{
               :
               <Switch>
                 <AuthedRoute exact path="/" component={Home}/>
+                <AuthedRoute exact path="/home" component={Home}/>
 
                 <Route  path="/login" component={Login}/>
-                <AuthedRoute path="/questions" component={Questions}/>
+                <AuthedRoute path="/new" component={NewQuestion}/>
                 <AuthedRoute path="/question/:id" component={QuestionPage}/>
                 <AuthedRoute path="/leaderBoard" component={LeaderBoard}/>
               </Switch>

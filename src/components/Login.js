@@ -21,7 +21,6 @@ class Login extends Component {
         debugger
         e.preventDefault()
         this.props.dispatch(setAuthedUser(this.state.userId));
-        //saveTolocalStorage('authedUser', this.state.userId )
         this.props.history.push("/");
     }
     

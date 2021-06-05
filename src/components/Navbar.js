@@ -29,10 +29,10 @@ const Navbar = (props) =>{
                             <NavLink exact to='/' className="nav-link active" aria-current="page" href="#">Home</NavLink>
                         </li>
                         <li className="nav-item">
-                             <NavLink to="/questions" className="nav-link" href="#">Questions</NavLink>
+                             <NavLink to="/new" className="nav-link" href="#">New Question</NavLink>
                         </li>
                         <li className="nav-item">
-                            <NavLink to="/leaderBoard" className="nav-link" href="#">Leader board</NavLink>
+                            <NavLink to="/leaderBoard" className="nav-link" href="#">Leader Board</NavLink>
                         </li>
                     </ul>
                     {loggedUser && (

@@ -73,15 +73,16 @@ class  Home extends Component{
 
 const mapStateToProps = ({ questions, authedUser }, questionId) => {
     debugger
-    
-    const answered = !authedUser
+
+    const answered = !authedUser && Object.keys(questions).length > 0
       ? []
       : Object.keys(questions).filter(id =>
               questions[id].optionOne.votes.includes(authedUser) ||
               questions[id].optionTwo.votes.includes(authedUser)
           ).sort((a, b) => questions[b].timestamp - questions[a].timestamp );
 
-    const unanswered = !authedUser
+          debugger
+    const unanswered = !authedUser  && Object.keys(questions).length > 0
     ? []
     : Object.keys(questions).filter(id =>
             !questions[id].optionOne.votes.includes(authedUser) &&
