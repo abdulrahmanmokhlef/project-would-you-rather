@@ -31,7 +31,6 @@ class  Home extends Component{
     
     render () {
         debugger
-        const  s  =this.props
         return(
             <div className ="text-center full-width ">
                <div className ="card question-container text-center">

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom'
 import { handleSaveQuestion } from '../actions/questions';
 
 class NewQuestion extends Component {
@@ -10,13 +9,12 @@ class NewQuestion extends Component {
         this.state = {
             optionOne: '',
             optionTwo: '',
+            loading: false
           };
 
         this.handleSubmit = this.handleSubmit.bind(this);
       } 
     
-
-      
 
       handleChange = e => {
         this.setState({
@@ -28,6 +26,9 @@ class NewQuestion extends Component {
     handleSubmit(e){
         e.preventDefault()
         debugger
+        this.setState({
+            loading: true,
+        })
         const { dispatch, authedUser } = this.props
         const question = {
             optionOneText: this.state.optionOne,
@@ -35,7 +36,12 @@ class NewQuestion extends Component {
             author: authedUser
         }
 
-        dispatch(handleSaveQuestion(question)).then(() => this.props.history.push('/home'));
+        dispatch(handleSaveQuestion(question)).then(() => {
+            this.setState({
+                loading: true,
+            }) 
+            this.props.history.push('/home')
+        });
     }
 
     render (){
@@ -52,10 +58,10 @@ class NewQuestion extends Component {
                         </div>
                         <p><small>OR</small></p>
                         <div className="form-group">
-                            <input type="text" onChange={this.handleChange} value={this.state.optionTwo} className="form-control" name="optionTwo"  value={this.state.optionTwo} placeholder="Enter option two here"  />
+                            <input type="text" onChange={this.handleChange} value={this.state.optionTwo} className="form-control" name="optionTwo"   placeholder="Enter option two here"  />
                         </div>
                         
-                        <button type="submit" className="btn btn-info form-control">Submit</button>
+                        <button type="submit" disabled = {this.state.loading} className="btn btn-info form-control">Submit</button>
                     </form>
                 </div>
             </div>

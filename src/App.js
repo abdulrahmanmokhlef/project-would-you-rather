@@ -8,7 +8,6 @@ import Navbar from './components/Navbar';
 import {handleInitialData} from './actions/shared'
 import Login from './components/Login';
 import Home from './components/Home';
-import Questions from './components/questions';
 import AuthedRoute from './routes/AuthedRoute';
 import LeaderBoard from './components/leaderBoard';
 import QuestionPage from './components/questionPage';
@@ -23,7 +22,7 @@ class App extends Component{
   }
 
   render () {
-    const { loading, authedUser } = this.props
+    const { loading } = this.props
 
     return (
       <Fragment>

@@ -4,13 +4,12 @@ import { useParams } from 'react-router';
 
 const QuestionInfo = props => {
 
-  const {  authedUser, users, questions } = props;
+  const { users, questions } = props;
   const { id } = useParams()
   const question =  questions[id]
   const author = users[question.author];
   
 
-  let userAnswer = null;
 
   // calculation part
   const optionOneVotes = question.optionOne.votes.length;
@@ -22,15 +21,6 @@ const QuestionInfo = props => {
     optionOneVotes === 0 ? 0 : Math.round((optionOneVotes / totalVotes) * 100);
   const optionTwoPercentage =
     optionTwoVotes === 0 ? 0 : Math.round((optionTwoVotes / totalVotes) * 100);
-
-
-  if (question.optionOne.votes.includes(authedUser)) {
-    userAnswer = 'optionOne';
-  }
-  if (question.optionTwo.votes.includes(authedUser)) {
-    userAnswer = 'optionTwo';
-  }
-
 
 
   return (

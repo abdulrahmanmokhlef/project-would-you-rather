@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 function LeaderBoard (props){
-   const {users, questions} = props
+   const { users } = props
 
    let sortedUsers = users? Object.keys(users) : null;
 

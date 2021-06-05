@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link,withRouter, Redirect, useParams } from 'react-router-dom';
+import { Link,withRouter } from 'react-router-dom';
 import { submitQuestions } from '../actions/questions';
 
 
