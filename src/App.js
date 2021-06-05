@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import { Route, Switch } from 'react-router';
 
 import { connect } from 'react-redux';
@@ -25,31 +25,31 @@ class App extends Component{
     const { loading, authedUser } = this.props
 
     return (
-      <div className="container">
-        <Navbar />
-        
-        {loading === true
-          ? null
-          :
-          <Switch>
-            <AuthedRoute exact path="/" component={Home}/>
+      <Fragment>
+          <LoadingBar />
+          <div className="container">
+            <Navbar />
+            
+            {loading === true
+              ? null
+              :
+              <Switch>
+                <AuthedRoute exact path="/" component={Home}/>
 
-            <Route  path="/login" component={Login}/>
-            <AuthedRoute path="/questions" component={Questions}/>
-            <AuthedRoute path="/question/:id" component={QuestionPage}/>
-            <AuthedRoute path="/leaderBoard" component={LeaderBoard}/>
-          </Switch>
-        }
-        
-
-      </div>
+                <Route  path="/login" component={Login}/>
+                <AuthedRoute path="/questions" component={Questions}/>
+                <AuthedRoute path="/question/:id" component={QuestionPage}/>
+                <AuthedRoute path="/leaderBoard" component={LeaderBoard}/>
+              </Switch>
+            }
+          </div>
+      </Fragment>
     );
   }
 }
-const mapStateToProps = ({ users, authedUser }) => {
+const mapStateToProps = ({ users}) => {
   return {
     users,
-    authedUser,
     loading: Object.keys(users).length <= 0
   };
 };

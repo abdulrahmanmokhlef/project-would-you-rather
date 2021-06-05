@@ -88,7 +88,6 @@ const mapStateToProps = ({ questions, authedUser }, questionId) => {
             !questions[id].optionTwo.votes.includes(authedUser)
         ).sort((a, b) => questions[b].timestamp - questions[a].timestamp );
     
-
     const author = !questions[questionId]? []: !questions[questionId];
     return {
       author,

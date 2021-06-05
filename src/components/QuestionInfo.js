@@ -49,7 +49,7 @@ const QuestionInfo = props => {
                     <div className="card card-section">
                         <p>{question.optionOne.text}</p> 
                         <div class="progress">
-                            <div className="progress-bar bg-info" role="progressbar" style={{width: optionOnePersentage}}  aria-valuemin="0" aria-valuemax="100">
+                            <div className="progress-bar progress-bar-striped bg-info" role="progressbar" style={{width: optionOnePersentage}}  aria-valuemin="0" aria-valuemax="100">
                                 <span>{optionOnePersentage} %</span>
                             </div>
                         </div>
@@ -57,10 +57,10 @@ const QuestionInfo = props => {
                         <p>{optionOneVotes} out of {totalVotes} votes</p>
 
                     </div>
-                    <div className="card card-section">
+                    <div className="card  card-section">
                         <p>{question.optionTwo.text}</p> 
                         <div class="progress">
-                            <div className="progress-bar bg-info" role="progressbar" style={{width: optionTwoPercentage}}  aria-valuemin="0" aria-valuemax="100">
+                            <div className="progress-bar progress-bar-striped bg-info" role="progressbar" style={{width: optionTwoPercentage}}  aria-valuemin="0" aria-valuemax="100">
                              <span>{optionTwoPercentage} %</span>
                             </div>
                         </div>

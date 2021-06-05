@@ -47,7 +47,7 @@ class Question extends Component {
                                     </div>
                                     <div className="col-sm-8 question">
                                         <h4>Would you rather?</h4>
-                                        <p>{question.optionOne.text}</p> 
+                                        <p>...{question.optionOne.text}...</p> 
                                     </div>
                                 </div>
                                 </div>

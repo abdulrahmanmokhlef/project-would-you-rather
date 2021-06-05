@@ -35,9 +35,8 @@ class Login extends Component {
                     <div className="mb-3">
                     </div>
                     <div className="mb-3">
-                        {/* <label for="select" class="form-label">select user</label> */}
                         <select className="form-control" onChange={this.handleChange}>
-                            <option selected disabled value="0">Select user</option> 
+                            <option >Select user</option> 
                             {Object.keys(users).map( user => {
                                return <option key={user} value={user}>{users[user].name}</option>
                             })}
