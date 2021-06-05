@@ -1,24 +1,26 @@
 import React, { Component, Fragment } from 'react'
 import { Route, Switch } from 'react-router';
-
 import { connect } from 'react-redux';
+import LoadingBar, { showLoading, hideLoading } from 'react-redux-loading-bar';
 
 import './App.css';
 import Navbar from './components/Navbar';
 import {handleInitialData} from './actions/shared'
 import Login from './components/Login';
 import Home from './components/Home';
-import AuthedRoute from './routes/AuthedRoute';
+import PrivateRoute from './routes/PrivateRoute';
 import LeaderBoard from './components/leaderBoard';
 import QuestionPage from './components/questionPage';
-import { LoadingBar } from 'react-redux-loading';
 import NewQuestion from './components/NewQuestion';
+import NotFound from './components/NotFound';
 
 class App extends Component{
   componentDidMount() {
     const { dispatch } = this.props
-
-    dispatch(handleInitialData())
+    dispatch(showLoading());
+    dispatch(handleInitialData()).then(() => {
+      dispatch(hideLoading());
+    })
   }
 
   render () {
@@ -26,21 +28,22 @@ class App extends Component{
 
     return (
       <Fragment>
-          <LoadingBar />
           <div className="container">
             <Navbar />
-            
+            <LoadingBar />
+
             {loading === true
               ? null
               :
               <Switch>
-                <AuthedRoute exact path="/" component={Home}/>
-                <AuthedRoute exact path="/home" component={Home}/>
-
+                <PrivateRoute exact path="/" component={Home}/>
+                <PrivateRoute path="/home" component={Home}/>
                 <Route  path="/login" component={Login}/>
-                <AuthedRoute path="/new" component={NewQuestion}/>
-                <AuthedRoute path="/question/:id" component={QuestionPage}/>
-                <AuthedRoute path="/leaderBoard" component={LeaderBoard}/>
+                <PrivateRoute path="/add" component={NewQuestion}/>
+                <PrivateRoute path="/question/:id" component={QuestionPage}/>
+                <PrivateRoute path="/leaderBoard" component={LeaderBoard}/>
+                <Route path="*"  component={NotFound} /> 
+                <Route component={NotFound} />
               </Switch>
             }
           </div>
@@ -51,7 +54,7 @@ class App extends Component{
 const mapStateToProps = ({ users}) => {
   return {
     users,
-    loading: Object.keys(users).length <= 0
+    loading: Object.keys(users).length <= 0,
   };
 };
 export default connect(mapStateToProps)(App);

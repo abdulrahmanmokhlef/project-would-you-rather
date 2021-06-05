@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import { NavLink,  useHistory } from 'react-router-dom';
 
 import {  setAuthedUser} from "../actions/authedUser";
-import { removeFromLocalstorage } from '../utils/localStorage';
 const Navbar = (props) =>{
     const { loggedUser, dispatch} = props
     const history = useHistory();
@@ -12,7 +11,6 @@ const Navbar = (props) =>{
         e.preventDefault()
         
         dispatch(setAuthedUser(null))
-        removeFromLocalstorage('authedUser')
         history.push("/login");
     } 
 
@@ -29,10 +27,10 @@ const Navbar = (props) =>{
                             <NavLink exact to='/' className="nav-link active" aria-current="page" href="#">Home</NavLink>
                         </li>
                         <li className="nav-item">
-                             <NavLink to="/new" className="nav-link" href="#">New Question</NavLink>
+                             <NavLink to="/add" className="nav-link" >New Question</NavLink>
                         </li>
                         <li className="nav-item">
-                            <NavLink to="/leaderBoard" className="nav-link" href="#">Leader Board</NavLink>
+                            <NavLink to="/leaderBoard" className="nav-link" >Leader Board</NavLink>
                         </li>
                     </ul>
                     {loggedUser && (

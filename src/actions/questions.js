@@ -1,4 +1,4 @@
-import { hideLoading, showLoading } from "react-redux-loading"
+import { hideLoading, showLoading } from "react-redux-loading-bar"
 import { _saveQuestion, _saveQuestionAnswer } from "../utils/_DATA"
 
 export const GET_QUESTIONS = 'GET_QUESTIONS'

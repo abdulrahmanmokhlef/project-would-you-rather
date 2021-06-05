@@ -17,10 +17,16 @@ class Login extends Component {
     }
 
     handleSubmit = (e) =>{
-        debugger
+        
         e.preventDefault()
         this.props.dispatch(setAuthedUser(this.state.userId));
-        this.props.history.push("/");
+        debugger
+        const UrlFrom =
+            this.props.location !== undefined && this.props.location.state !== undefined
+                ? this.props.location.state.from
+                : '/home';
+
+        this.props.history.push(`${UrlFrom}`);
     }
     
     render () {
