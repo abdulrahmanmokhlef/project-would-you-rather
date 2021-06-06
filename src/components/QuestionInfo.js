@@ -22,9 +22,7 @@ const QuestionInfo = props => {
   const optionTwoPercentage =
     optionTwoVotes === 0 ? 0 : Math.round((optionTwoVotes / totalVotes) * 100);
 
-  debugger
-  const x= question.optionOne.votes.includes(authedUser)
-  const y = question.optionTwo.votes.includes(authedUser)
+  
   debugger
   return (
     <div className="card">
