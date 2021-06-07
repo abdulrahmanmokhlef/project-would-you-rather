@@ -32,8 +32,8 @@ const QuestionInfo = props => {
         <div className="card-body">
             <div className="container">
             <div className="row">
-                <div className="col-sm-4">
-                    <img  className ="user-avatar" src={author.avatarURL} alt={`avatar of ${author.name}`} />
+                <div className="col-sm-4 column">
+                    <img  src={author.avatarURL} alt={`avatar of ${author.name}`} />
                 </div>
                 <div className="col-sm-8 question">
                     <h4>Results</h4>
